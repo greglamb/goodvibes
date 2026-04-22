@@ -3,7 +3,7 @@
 > **Fork Notice:** This project is a fork of [Superpowers](https://github.com/obra/superpowers) by Jesse Vincent.
 > See [LICENSE](./LICENSE) for copyright details.
 
-Greg's highly customized Claude plugin. Here be dragons.
+Greg's highly customized Claude setup. Here be dragons.
 
 ## ⚠️ Disclaimer
 
