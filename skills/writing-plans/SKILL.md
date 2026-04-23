@@ -49,7 +49,7 @@ This structure informs the task decomposition. Each task should produce self-con
 ```markdown
 # [Feature Name] Implementation Plan
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use goodvibes:subagent-driven-development (recommended) or goodvibes:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **For agentic workers:** REQUIRED SUB-SKILL: Use goodvibes:executing-plans (default) or goodvibes:subagent-driven-development (opt-in for high-risk or unfamiliar work) to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** [One sentence describing what this builds]
 
@@ -133,20 +133,21 @@ If you find issues, fix them inline. No need to re-review — just fix and move 
 
 ## Execution Handoff
 
-After saving the plan, offer execution choice:
+Plan complete and saved to `docs/goodvibes/plans/<filename>.md`.
 
-**"Plan complete and saved to `docs/goodvibes/plans/<filename>.md`. Two execution options:**
+**Default execution:** Inline via `executing-plans` skill.
 
-**1. Subagent-Driven (recommended)** - I dispatch a fresh subagent per task, review between tasks, fast iteration
+Before dispatching, check the project's `CLAUDE.md` for a
+`Goodvibes Execution Preferences` section. If it specifies a different
+execution mode, follow that.
 
-**2. Inline Execution** - Execute tasks in this session using executing-plans, batch execution with checkpoints
+Subagent-driven execution is available but opt-in. Use it only when:
 
-**Which approach?"**
+- The user explicitly requests subagents
+- The plan touches unfamiliar code (e.g., a new module, an external dependency)
+- The plan is high-risk (production data migration, security-sensitive change,
+  multi-module refactor)
 
-**If Subagent-Driven chosen:**
-- **REQUIRED SUB-SKILL:** Use goodvibes:subagent-driven-development
-- Fresh subagent per task + two-stage review
+To opt in, invoke `subagent-driven-development` explicitly.
 
-**If Inline Execution chosen:**
-- **REQUIRED SUB-SKILL:** Use goodvibes:executing-plans
-- Batch execution with checkpoints for review
+Proceeding with inline execution now.

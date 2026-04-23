@@ -5,6 +5,23 @@ description: Use when executing implementation plans with independent tasks in t
 
 # Subagent-Driven Development
 
+## When to Use This Skill
+
+This skill is opt-in in Goodvibes. Do not invoke it by default.
+
+Invoke only when one or more applies:
+
+- User has explicitly requested subagent execution
+- The plan touches unfamiliar code or external dependencies
+- The plan is high-risk: production data, security, multi-module refactors
+- The task genuinely benefits from per-task context isolation
+
+For typical feature work on familiar code, use `executing-plans` instead.
+Opus 4.7 prefers focused one-response execution; spawning subagents adds
+wall-clock overhead without proportional quality gain for routine tasks.
+
+---
+
 Execute plan by dispatching fresh subagent per task, with two-stage review after each: spec compliance review first, then code quality review.
 
 **Why subagents:** You delegate tasks to specialized agents with isolated context. By precisely crafting their instructions and context, you ensure they stay focused and succeed at their task. They should never inherit your session's context or history — you construct exactly what they need. This also preserves your own context for coordination work.
