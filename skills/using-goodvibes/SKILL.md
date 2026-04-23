@@ -112,6 +112,16 @@ When multiple skills could apply, use this order:
 
 The skill itself tells you which.
 
+## Auto-Triggered Skills
+
+Some skills activate on specific session events rather than on user intent.
+Invoke these proactively when the condition applies:
+
+- **compact-instructions** — before any `/compact`, when context usage exceeds
+  70% and compaction is imminent, or when the user asks to "save context."
+  Emits a structured checkpoint so architectural decisions, rejected
+  alternatives, and exact identifiers survive summarization.
+
 ## User Instructions
 
 Instructions say WHAT, not HOW. "Add X" or "Fix Y" doesn't mean skip workflows.
