@@ -1,5 +1,22 @@
 # Superpowers — Contributor Guidelines
 
+## Goodvibes Execution Preferences
+
+Goodvibes defaults differ from upstream Superpowers. When skills reference
+"execution mode" or similar, apply these preferences:
+
+- **Default execution mode:** inline (via `executing-plans`)
+- **Subagent-driven execution:** opt-in only, for:
+  - Tasks touching unfamiliar codebases
+  - High-risk refactors across multiple modules
+  - Explicit user request ("use subagents for this")
+- **Verification:** rely on Opus 4.7 self-verification by default. Explicit
+  `verification-before-completion` is invoked only when acceptance criteria
+  are complex or spec compliance matters legally/contractually.
+- **Compact continuity:** this is a compact-heavy workflow. Preserve
+  architectural decisions, rejected alternatives with rationale, and exact
+  identifiers across compaction events.
+
 ## If You Are an AI Agent
 
 Stop. Read this section before doing anything.
