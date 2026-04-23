@@ -113,3 +113,86 @@ Each entry: `### <short title>` heading, followed by:
   explicit instructions about what architectural context to preserve.
 - **Files affected:**
   - `skills/compact-instructions/SKILL.md` (new)
+
+### goodvibes-workflow absorbed into fork
+
+- **Date:** 2026-04-23
+- **Upstream behavior:** N/A (goodvibes-workflow is a Greg-authored plugin,
+  not upstream).
+- **Goodvibes behavior:** Hooks, CLAUDE.md injection skill, and commands
+  from the standalone goodvibes-workflow plugin are now part of this fork.
+  The standalone plugin is deprecated in a companion commit on
+  `claude-gcode-tools` (branch `deprecate/goodvibes-workflow`).
+- **Rationale:** Single plugin install, single update cycle, no namespace
+  coordination between two plugins, cleaner distribution.
+- **Files affected:** `hooks/`, `skills/setup-project-guidelines/`,
+  `commands/*.md`, `docs/templates/`, `docs/retired-commands.md`.
+
+### Thin-wrapper commands retired
+
+- **Date:** 2026-04-23
+- **Upstream behavior:** N/A.
+- **Goodvibes behavior:** `/vibeplan` and `/vibecheck` retired; their sauce
+  folded into `brainstorming` and `verification-before-completion`
+  respectively. `/vibedebug` retired entirely without fold-in — the
+  `systematic-debugging` skill alone is sufficient, and the
+  `_gitignored/debug/` convention is a personal habit rather than a
+  skill-level rule.
+- **Rationale:** Thin wrappers around skills are redundant when the skill
+  can be taught to do the same work natively. Where the wrapper added no
+  durable value (vibedebug), dropping it outright is cleaner than folding
+  in minor conventions that don't belong at the skill level.
+- **Files affected:** `skills/brainstorming/`,
+  `skills/verification-before-completion/`, `docs/retired-commands.md`.
+
+### TODO.md sectioned format with Rejected Approaches
+
+- **Date:** 2026-04-23
+- **Upstream behavior:** N/A.
+- **Goodvibes behavior:** TODO.md uses a sectioned format (Next Up, Blocked,
+  Someday/Maybe, Known Limitations, Tech Debt, Rejected Approaches). The
+  'no silent deferrals' rule extends to rejected alternatives — they must
+  be logged with rationale.
+- **Rationale:** Flat TODO lists don't scale across multi-month projects.
+  Sectioned format enables section-level operations (archive, render).
+  Rejected-approaches tracking prevents re-litigating settled design
+  choices after compaction.
+- **Files affected:** `skills/brainstorming/`, `skills/writing-plans/`,
+  `skills/setup-project-guidelines/references/SETUP.md`,
+  `docs/templates/TODO.md.template`, `commands/todo.md`,
+  `commands/todo-archive.md`.
+
+### Directive-based CHANGELOG discipline
+
+- **Date:** 2026-04-23
+- **Upstream behavior:** N/A.
+- **Goodvibes behavior:** CHANGELOG discipline governed by an explicit
+  directive file (`CHANGELOG_DIRECTIVES.md`) deployed to user projects.
+  Rules: user-impact criterion (not commit type), user voice, Keep a
+  Changelog layout (Added / Changed / Fixed / Removed), tag-time promotion
+  of `[Unreleased]` to `## [vX.Y.Z] - YYYY-MM-DD` in the same commit the
+  tag points at, and `chore(release): v<X.Y.Z>` as the release commit
+  convention. The `changelog-todo-reminder` hook uses a feat/fix/breaking
+  heuristic as a non-blocking reminder; authors judge user impact.
+- **Rationale:** Commit-type heuristics are a lossy proxy for user impact.
+  Explicit directive captures the real rule plus the release-time
+  mechanics (tag-time promotion, release commit) that are otherwise easy
+  to forget. Deploying as a project-root file makes the rules
+  discoverable without opening skill internals.
+- **Files affected:** `hooks/changelog-todo-reminder.sh`,
+  `skills/setup-project-guidelines/references/SETUP.md`,
+  `docs/templates/CHANGELOG.md.template`,
+  `docs/templates/CHANGELOG_DIRECTIVES.md.template`, `commands/setup.md`.
+
+### CLAUDE.md promotion workflow
+
+- **Date:** 2026-04-23
+- **Upstream behavior:** N/A.
+- **Goodvibes behavior:** `/goodvibes:promote` command and skill integrations
+  surface mid-session discoveries for promotion into the durable CLAUDE.md.
+- **Rationale:** Compaction is lossy. Durable project memory (CLAUDE.md) is
+  compaction-immune. The promotion workflow lets the user move important
+  discoveries from conversation state into durable storage as a single
+  confirmed action.
+- **Files affected:** `commands/promote.md`, `skills/compact-instructions/`,
+  `skills/brainstorming/`.
