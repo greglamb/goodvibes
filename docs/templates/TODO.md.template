@@ -1,0 +1,31 @@
+# TODO
+
+## Next Up
+
+<!-- Actively queued work. Items here should be ready to start. -->
+
+## Blocked
+
+<!-- Waiting on external dependency, decision, or other block. Each entry should name what's blocking it. -->
+
+## Someday/Maybe
+
+<!-- Ideas worth considering, no commitment. Lowest priority. -->
+
+## Known Limitations
+
+<!-- Intentional scope reductions documented for users. These are features we've chosen not to build. -->
+
+## Tech Debt
+
+<!-- Internal debt to address eventually. Things that work but aren't right. -->
+
+## Rejected Approaches
+
+<!-- Alternatives considered and rejected, with rationale. Extends 'no silent deferrals' to rejections. -->
+
+<!--
+Entry format:
+- [YYYY-MM-DD] Short description
+  Detail: what it is, why it matters, blocker (if applicable), rationale (if rejected)
+-->
