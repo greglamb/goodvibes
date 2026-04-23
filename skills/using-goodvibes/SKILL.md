@@ -121,6 +121,11 @@ Invoke these proactively when the condition applies:
   70% and compaction is imminent, or when the user asks to "save context."
   Emits a structured checkpoint so architectural decisions, rejected
   alternatives, and exact identifiers survive summarization.
+- **setup-project-guidelines** — when the user mentions Goodvibes setup,
+  initialization, validation, or migration of CLAUDE.md markers; when a new
+  project needs standard guidelines; or when the `claudemd-drift-detection`
+  hook reports missing or legacy `<!-- goodvibes-workflow:* -->` markers.
+  Handles initialize, validate, and migrate modes idempotently.
 
 ## User Instructions
 

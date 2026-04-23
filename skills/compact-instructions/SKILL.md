@@ -65,6 +65,11 @@ the current session should be promoted to CLAUDE.md so they survive beyond
 compaction entirely. If yes, state which ones and ask the user to confirm
 before promoting.
 
+When promotion candidates are identified, offer to run `/goodvibes:promote`
+for each. This command handles the diff preview, confirmation, and write
+steps systematically, reducing the friction of moving context into
+durable storage.
+
 ## Output Format
 
 When invoked explicitly (not automatically pre-compact), produce a structured

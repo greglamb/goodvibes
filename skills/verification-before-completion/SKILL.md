@@ -26,9 +26,12 @@ For routine tasks, trust Opus 4.7's self-verification and skip this skill.
 When invoked, confirm each of the following and report status:
 
 1. All acceptance criteria from the originating user story or spec are met
-2. All tests written during this task pass
-3. All pre-existing tests still pass (no regressions)
-4. Code follows the project's documented conventions (per project-standards skill)
+2. **Project standards compliance:** if a `project-standards` skill exists in
+   the current project, read it and verify the changes conform to its
+   conventions, coding style, and architectural rules. Report any violations
+   as critical issues that block completion.
+3. All tests written during this task pass
+4. All pre-existing tests still pass (no regressions)
 5. Documentation (README, CHANGELOG, inline comments where material) is updated
 6. No deprecated APIs used
 
