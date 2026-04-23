@@ -9,6 +9,12 @@ Dispatch goodvibes:code-reviewer subagent to catch issues before they cascade. T
 
 **Core principle:** Review early, review often.
 
+## Done Looks Like
+
+- Reviewer subagent dispatched with a crafted context (not session history)
+- Review output received and parsed
+- Each Critical/Important issue addressed or explicitly deferred with rationale
+
 ## When to Request Review
 
 **Mandatory:**

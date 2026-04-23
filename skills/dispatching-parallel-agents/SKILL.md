@@ -13,6 +13,12 @@ When you have multiple unrelated failures (different test files, different subsy
 
 **Core principle:** Dispatch one agent per independent problem domain. Let them work concurrently.
 
+## Done Looks Like
+
+- Two or more independent tasks identified (no shared state, no sequential dependencies)
+- Each dispatched agent has a focused, self-contained prompt
+- Agent results synthesized back into a single coherent answer for the user
+
 ## When to Use
 
 ```dot

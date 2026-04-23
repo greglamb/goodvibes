@@ -53,7 +53,25 @@ Each entry: `### <short title>` heading, followed by:
 - **Rationale:** Opus 4.7 uses adaptive thinking that cannot be disabled and
   ignores or over-responds to such prompts. Explicit thinking language is
   redundant at best, counterproductive at worst.
-- **Files affected:** Multiple skill files (see Task 5 log).
+- **Files affected:** No redundant thinking-prompt language remained in upstream
+  skills at the time of this fork; no removals were required. "Done Looks Like"
+  sections added to all preserved skills:
+  - `skills/brainstorming/SKILL.md`
+  - `skills/dispatching-parallel-agents/SKILL.md`
+  - `skills/executing-plans/SKILL.md`
+  - `skills/finishing-a-development-branch/SKILL.md`
+  - `skills/receiving-code-review/SKILL.md`
+  - `skills/requesting-code-review/SKILL.md`
+  - `skills/subagent-driven-development/SKILL.md`
+  - `skills/systematic-debugging/SKILL.md`
+  - `skills/test-driven-development/SKILL.md`
+  - `skills/using-git-worktrees/SKILL.md`
+  - `skills/writing-plans/SKILL.md`
+  - `skills/writing-skills/SKILL.md`
+  "Scope Boundaries" sections added to code-modifying skills:
+  - `skills/test-driven-development/SKILL.md`
+  - `skills/executing-plans/SKILL.md`
+  - `skills/subagent-driven-development/SKILL.md`
 
 ### Framework identity renamed to "goodvibes"
 

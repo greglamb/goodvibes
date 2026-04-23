@@ -11,6 +11,12 @@ Code review requires technical evaluation, not emotional performance.
 
 **Core principle:** Verify before implementing. Ask before assuming. Technical correctness over social comfort.
 
+## Done Looks Like
+
+- Every comment restated in your own words (or clarification asked)
+- Each suggestion either implemented, declined with specific technical rationale, or deferred with a follow-up task
+- No reflexive agreement or reflexive rejection; positions backed by evidence
+
 ## The Response Pattern
 
 ```

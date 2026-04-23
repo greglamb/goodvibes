@@ -13,6 +13,12 @@ Git worktrees create isolated workspaces sharing the same repository, allowing w
 
 **Announce at start:** "I'm using the using-git-worktrees skill to set up an isolated workspace."
 
+## Done Looks Like
+
+- Worktree created at a path following the directory-selection priority order
+- Safety checks passed (no destructive operation attempted on the main tree)
+- Branch tracking and initial state correct; user informed of the new location
+
 ## Directory Selection Process
 
 Follow this priority order:

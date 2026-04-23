@@ -18,6 +18,13 @@ Assume they are a skilled developer, but know almost nothing about our toolset o
 **Save plans to:** `docs/goodvibes/plans/YYYY-MM-DD-<feature-name>.md`
 - (User preferences for plan location override this default)
 
+## Done Looks Like
+
+- Plan saved to `docs/goodvibes/plans/<filename>.md`
+- Every task has explicit file paths, verification steps, and acceptance criteria
+- Plan passes the self-review (spec coverage, no placeholders, type consistency)
+- Plan document header includes REQUIRED SUB-SKILL line naming executing-plans as default
+
 ## Scope Check
 
 If the spec covers multiple independent subsystems, it should have been broken into sub-project specs during brainstorming. If it wasn't, suggest breaking this into separate plans — one per subsystem. Each plan should produce working, testable software on its own.

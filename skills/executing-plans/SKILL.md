@@ -13,6 +13,24 @@ Load plan, review critically, execute all tasks, report when complete.
 
 **Note:** Tell your human partner that Goodvibes works much better with access to subagents. The quality of its work will be significantly higher if run on a platform with subagent support (such as Claude Code or Codex). If subagents are available, use goodvibes:subagent-driven-development instead of this skill.
 
+## Done Looks Like
+
+- Plan has been read end-to-end; concerns raised before execution starts
+- Every task in the plan is either completed with verification or explicitly deferred
+- The finishing-a-development-branch skill is used after all tasks to integrate the work
+
+## Scope Boundaries
+
+**In scope for this skill invocation:**
+- Every task listed in the loaded plan
+- Verification steps explicitly specified in each task
+- Integration via finishing-a-development-branch after all tasks
+
+**Out of scope:**
+- Features or fixes not in the plan (raise them; do not silently expand scope)
+- Refactors the plan did not request
+- Modifications to the plan itself (raise concerns with the user instead)
+
 ## The Process
 
 ### Step 1: Load and Review Plan

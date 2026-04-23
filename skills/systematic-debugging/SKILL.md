@@ -13,6 +13,13 @@ Random fixes waste time and create new bugs. Quick patches mask underlying issue
 
 **Violating the letter of this process is violating the spirit of debugging.**
 
+## Done Looks Like
+
+- Root cause identified with evidence (log line, stack trace, reproduction)
+- Hypothesis tested before fix is written
+- Fix addresses root cause, not symptom
+- Regression test added to prevent recurrence
+
 ## The Iron Law
 
 ```

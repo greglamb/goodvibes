@@ -19,6 +19,13 @@ You write test cases (pressure scenarios with subagents), watch them fail (basel
 
 **Official guidance:** For Anthropic's official skill authoring best practices, see anthropic-best-practices.md. This document provides additional patterns and guidelines that complement the TDD-focused approach in this skill.
 
+## Done Looks Like
+
+- Baseline pressure-test failure observed without the skill
+- Skill written; pressure test passes with the skill
+- At least one refactor pass closes rationalization loopholes
+- Skill registered in using-goodvibes dispatcher if appropriate
+
 ## What is a Skill?
 
 A **skill** is a reference guide for proven techniques, patterns, or tools. Skills help future Claude instances find and apply effective approaches.

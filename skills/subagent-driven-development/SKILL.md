@@ -28,6 +28,25 @@ Execute plan by dispatching fresh subagent per task, with two-stage review after
 
 **Core principle:** Fresh subagent per task + two-stage review (spec then quality) = high quality, fast iteration
 
+## Done Looks Like
+
+- One subagent per task, each with isolated context (no session history leak)
+- Two-stage review (spec compliance, then code quality) completed after each task
+- Final finishing-a-development-branch step executed after all tasks
+
+## Scope Boundaries
+
+**In scope for this skill invocation:**
+- The specific plan passed in
+- One subagent per task with a crafted prompt
+- Two-stage review (spec compliance then code quality) per task
+- Final finishing-a-development-branch step after all tasks
+
+**Out of scope:**
+- Fanning out to subagents for work that is already clear and low-risk
+- Passing session history to subagents
+- Skipping the review stages to save time
+
 ## When to Use
 
 ```dot
