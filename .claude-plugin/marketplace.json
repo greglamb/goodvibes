@@ -1,19 +1,19 @@
 {
-  "name": "superpowers-dev",
-  "description": "Development marketplace for Superpowers core skills library",
+  "name": "goodvibes-dev",
+  "description": "Development marketplace for Goodvibes core skills library",
   "owner": {
-    "name": "Jesse Vincent",
-    "email": "jesse@fsck.com"
+    "name": "Greg Lamb",
+    "email": "email@greglamb.dev"
   },
   "plugins": [
     {
-      "name": "superpowers",
-      "description": "Core skills library for Claude Code: TDD, debugging, collaboration patterns, and proven techniques",
+      "name": "goodvibes",
+      "description": "Goodvibes: a fork of Superpowers tuned for Opus 4.7 and compact-preserving workflows. Core skills library: TDD, debugging, collaboration patterns.",
       "version": "5.0.7",
       "source": "./",
       "author": {
-        "name": "Jesse Vincent",
-        "email": "jesse@fsck.com"
+        "name": "Greg Lamb",
+        "email": "email@greglamb.dev"
       }
     }
   ]

@@ -55,6 +55,35 @@ Each entry: `### <short title>` heading, followed by:
   redundant at best, counterproductive at worst.
 - **Files affected:** Multiple skill files (see Task 5 log).
 
+### Framework identity renamed to "goodvibes"
+
+- **Date:** 2026-04-23
+- **Upstream behavior:** Framework is named "Superpowers" in plugin manifest,
+  command namespace, agent namespace, skill cross-references, and prose.
+- **Goodvibes behavior:** Framework renamed to "goodvibes" throughout, with
+  the exceptions documented below.
+- **Rationale:** Personal-use fork with a distinct identity and philosophy;
+  shared namespace with upstream creates confusion when both are referenced.
+- **Preserved as "Superpowers":**
+  - Upstream repo URL (`obra/superpowers`)
+  - LICENSE attribution
+  - Fork notice in README
+  - All "Upstream behavior:" sections in this file
+  - Comparative prose ("Goodvibes is Superpowers retuned for…")
+  - Historical context (upstream issue URLs, e.g., issues/571 and issue #1044)
+  - Legacy-skills migration warning in `hooks/session-start`
+    (points users at `~/.config/superpowers/skills` so they can migrate)
+- **Files affected:** See the commit for full file list. Primary renames:
+  - `skills/using-superpowers/` → `skills/using-goodvibes/`
+  - `docs/superpowers/` → `docs/goodvibes/`
+  - Plugin manifest identity (`.claude-plugin/plugin.json`, `marketplace.json`)
+  - `package.json` `name` and `main` fields
+  - Command and agent namespace prefixes
+  - `hooks/session-start` injection strings and skill path
+  - `scripts/sync-to-codex-plugin.sh` publishing identity
+  - All skill cross-references and prose self-references
+  - `tests/**` and `docs/**`
+
 ### Compact-instructions skill added
 
 - **Date:** 2026-04-23
