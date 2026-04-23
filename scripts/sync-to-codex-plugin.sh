@@ -2,7 +2,7 @@
 #
 # sync-to-codex-plugin.sh
 #
-# Sync this superpowers checkout → prime-radiant-inc/openai-codex-plugins.
+# Sync this goodvibes checkout → prime-radiant-inc/openai-codex-plugins.
 # Clones the fork fresh into a temp dir, rsyncs upstream content, regenerates
 # the Codex overlay file (.codex-plugin/plugin.json) inline, commits, pushes a
 # sync branch, and opens a PR.
@@ -20,7 +20,7 @@
 #   ./scripts/sync-to-codex-plugin.sh --bootstrap --assets-src DIR # create initial plugin
 #
 # Bootstrap mode: skips the "plugin must exist on base" check and seeds
-# plugins/superpowers/assets/ from --assets-src <dir> which must contain
+# plugins/goodvibes/assets/ from --assets-src <dir> which must contain
 # PrimeRadiant_Favicon.svg and PrimeRadiant_Favicon.png. Run once by one
 # team member to create the initial PR; every subsequent run is a normal
 # (non-bootstrap) sync.
@@ -35,7 +35,7 @@ set -euo pipefail
 
 FORK="prime-radiant-inc/openai-codex-plugins"
 DEFAULT_BASE="main"
-DEST_REL="plugins/superpowers"
+DEST_REL="plugins/goodvibes"
 
 # Paths in upstream that should NOT land in the embedded plugin.
 # The Codex-only paths are here too — they're managed by generate/bootstrap
@@ -96,16 +96,16 @@ generate_plugin_json() {
   mkdir -p "$(dirname "$dest")"
   cat > "$dest" <<EOF
 {
-  "name": "superpowers",
+  "name": "goodvibes",
   "version": "$version",
   "description": "An agentic skills framework & software development methodology that works: planning, TDD, debugging, and collaboration workflows.",
   "author": {
-    "name": "Jesse Vincent",
-    "email": "jesse@fsck.com",
-    "url": "https://github.com/obra"
+    "name": "Greg Lamb",
+    "email": "email@greglamb.dev",
+    "url": "https://github.com/greglamb"
   },
-  "homepage": "https://github.com/obra/superpowers",
-  "repository": "https://github.com/obra/superpowers",
+  "homepage": "https://github.com/greglamb/goodvibes",
+  "repository": "https://github.com/greglamb/goodvibes",
   "license": "MIT",
   "keywords": [
     "brainstorming",
@@ -119,10 +119,10 @@ generate_plugin_json() {
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Superpowers",
+    "displayName": "Goodvibes",
     "shortDescription": "Planning, TDD, debugging, and delivery workflows for coding agents",
-    "longDescription": "Use Superpowers to guide agent work through brainstorming, implementation planning, test-driven development, systematic debugging, parallel execution, code review, and finish-the-branch workflows.",
-    "developerName": "Jesse Vincent",
+    "longDescription": "Use Goodvibes to guide agent work through brainstorming, implementation planning, test-driven development, systematic debugging, parallel execution, code review, and finish-the-branch workflows.",
+    "developerName": "Greg Lamb",
     "category": "Coding",
     "capabilities": [
       "Interactive",
@@ -134,7 +134,7 @@ generate_plugin_json() {
       "Let's add a feature to this project."
     ],
     "brandColor": "#F59E0B",
-    "composerIcon": "./assets/superpowers-small.svg",
+    "composerIcon": "./assets/goodvibes-small.svg",
     "logo": "./assets/app-icon.png",
     "screenshots": []
   }
@@ -264,9 +264,9 @@ fi
 
 TIMESTAMP="$(date -u +%Y%m%d-%H%M%S)"
 if [[ $BOOTSTRAP -eq 1 ]]; then
-  SYNC_BRANCH="bootstrap/superpowers-${UPSTREAM_SHORT}-${TIMESTAMP}"
+  SYNC_BRANCH="bootstrap/goodvibes-${UPSTREAM_SHORT}-${TIMESTAMP}"
 else
-  SYNC_BRANCH="sync/superpowers-${UPSTREAM_SHORT}-${TIMESTAMP}"
+  SYNC_BRANCH="sync/goodvibes-${UPSTREAM_SHORT}-${TIMESTAMP}"
 fi
 git checkout -q -b "$SYNC_BRANCH"
 
@@ -299,7 +299,7 @@ echo ""
 echo "Overlay file (.codex-plugin/plugin.json) will be regenerated with"
 echo "version $UPSTREAM_VERSION regardless of rsync output."
 if [[ $BOOTSTRAP -eq 1 ]]; then
-  echo "Assets (superpowers-small.svg, app-icon.png) will be seeded from:"
+  echo "Assets (goodvibes-small.svg, app-icon.png) will be seeded from:"
   echo "  $ASSETS_SRC"
 fi
 
@@ -323,7 +323,7 @@ rsync "${RSYNC_ARGS[@]}" "$UPSTREAM/" "$DEST/"
 if [[ $BOOTSTRAP -eq 1 ]]; then
   echo "Seeding brand assets..."
   mkdir -p "$DEST/assets"
-  cp "$ASSETS_SRC/PrimeRadiant_Favicon.svg" "$DEST/assets/superpowers-small.svg"
+  cp "$ASSETS_SRC/PrimeRadiant_Favicon.svg" "$DEST/assets/goodvibes-small.svg"
   cp "$ASSETS_SRC/PrimeRadiant_Favicon.png" "$DEST/assets/app-icon.png"
 fi
 
@@ -344,18 +344,18 @@ fi
 git add "$DEST_REL"
 
 if [[ $BOOTSTRAP -eq 1 ]]; then
-  COMMIT_TITLE="bootstrap superpowers v$UPSTREAM_VERSION from upstream main @ $UPSTREAM_SHORT"
-  PR_BODY="Initial bootstrap of the superpowers plugin from upstream \`main\` @ \`$UPSTREAM_SHORT\` (v$UPSTREAM_VERSION).
+  COMMIT_TITLE="bootstrap goodvibes v$UPSTREAM_VERSION from upstream main @ $UPSTREAM_SHORT"
+  PR_BODY="Initial bootstrap of the goodvibes plugin from upstream \`main\` @ \`$UPSTREAM_SHORT\` (v$UPSTREAM_VERSION).
 
-Creates \`plugins/superpowers/\` from scratch: upstream content via rsync, \`.codex-plugin/plugin.json\` regenerated inline, brand assets seeded from a local Brand Assets directory.
+Creates \`plugins/goodvibes/\` from scratch: upstream content via rsync, \`.codex-plugin/plugin.json\` regenerated inline, brand assets seeded from a local Brand Assets directory.
 
 Run via: \`scripts/sync-to-codex-plugin.sh --bootstrap --assets-src <path>\`
 Upstream commit: https://github.com/obra/superpowers/commit/$UPSTREAM_SHA
 
 This is a one-time bootstrap. Subsequent syncs will be normal (non-bootstrap) runs and will not touch the \`assets/\` directory."
 else
-  COMMIT_TITLE="sync superpowers v$UPSTREAM_VERSION from upstream main @ $UPSTREAM_SHORT"
-  PR_BODY="Automated sync from superpowers upstream \`main\` @ \`$UPSTREAM_SHORT\` (v$UPSTREAM_VERSION).
+  COMMIT_TITLE="sync goodvibes v$UPSTREAM_VERSION from upstream main @ $UPSTREAM_SHORT"
+  PR_BODY="Automated sync from goodvibes upstream \`main\` @ \`$UPSTREAM_SHORT\` (v$UPSTREAM_VERSION).
 
 Run via: \`scripts/sync-to-codex-plugin.sh\`
 Upstream commit: https://github.com/obra/superpowers/commit/$UPSTREAM_SHA

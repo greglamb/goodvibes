@@ -13,6 +13,12 @@ Git worktrees create isolated workspaces sharing the same repository, allowing w
 
 **Announce at start:** "I'm using the using-git-worktrees skill to set up an isolated workspace."
 
+## Done Looks Like
+
+- Worktree created at a path following the directory-selection priority order
+- Safety checks passed (no destructive operation attempted on the main tree)
+- Branch tracking and initial state correct; user informed of the new location
+
 ## Directory Selection Process
 
 Follow this priority order:
@@ -43,7 +49,7 @@ If no directory exists and no CLAUDE.md preference:
 No worktree directory found. Where should I create worktrees?
 
 1. .worktrees/ (project-local, hidden)
-2. ~/.config/superpowers/worktrees/<project-name>/ (global location)
+2. ~/.config/goodvibes/worktrees/<project-name>/ (global location)
 
 Which would you prefer?
 ```
@@ -68,7 +74,7 @@ Per Jesse's rule "Fix broken things immediately":
 
 **Why critical:** Prevents accidentally committing worktree contents to repository.
 
-### For Global Directory (~/.config/superpowers/worktrees)
+### For Global Directory (~/.config/goodvibes/worktrees)
 
 No .gitignore verification needed - outside project entirely.
 
@@ -88,8 +94,8 @@ case $LOCATION in
   .worktrees|worktrees)
     path="$LOCATION/$BRANCH_NAME"
     ;;
-  ~/.config/superpowers/worktrees/*)
-    path="~/.config/superpowers/worktrees/$project/$BRANCH_NAME"
+  ~/.config/goodvibes/worktrees/*)
+    path="~/.config/goodvibes/worktrees/$project/$BRANCH_NAME"
     ;;
 esac
 

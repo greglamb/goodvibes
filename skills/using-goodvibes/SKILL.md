@@ -1,5 +1,5 @@
 ---
-name: using-superpowers
+name: using-goodvibes
 description: Use when starting any conversation - establishes how to find and use skills, requiring Skill tool invocation before ANY response including clarifying questions
 ---
 
@@ -17,10 +17,10 @@ This is not negotiable. This is not optional. You cannot rationalize your way ou
 
 ## Instruction Priority
 
-Superpowers skills override default system prompt behavior, but **user instructions always take precedence**:
+Goodvibes skills override default system prompt behavior, but **user instructions always take precedence**:
 
 1. **User's explicit instructions** (CLAUDE.md, GEMINI.md, AGENTS.md, direct requests) — highest priority
-2. **Superpowers skills** — override default system behavior where they conflict
+2. **Goodvibes skills** — override default system behavior where they conflict
 3. **Default system prompt** — lowest priority
 
 If CLAUDE.md, GEMINI.md, or AGENTS.md says "don't use TDD" and a skill says "always use TDD," follow the user's instructions. The user is in control.
@@ -111,6 +111,16 @@ When multiple skills could apply, use this order:
 **Flexible** (patterns): Adapt principles to context.
 
 The skill itself tells you which.
+
+## Auto-Triggered Skills
+
+Some skills activate on specific session events rather than on user intent.
+Invoke these proactively when the condition applies:
+
+- **compact-instructions** — before any `/compact`, when context usage exceeds
+  70% and compaction is imminent, or when the user asks to "save context."
+  Emits a structured checkpoint so architectural decisions, rejected
+  alternatives, and exact identifiers survive summarization.
 
 ## User Instructions
 

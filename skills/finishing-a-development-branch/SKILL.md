@@ -13,6 +13,12 @@ Guide completion of development work by presenting clear options and handling ch
 
 **Announce at start:** "I'm using the finishing-a-development-branch skill to complete this work."
 
+## Done Looks Like
+
+- All tests run and pass before any integration action
+- Integration option presented (merge, PR, or defer) and chosen by the user
+- Chosen workflow executed; branch state is clean
+
 ## The Process
 
 ### Step 1: Verify Tests

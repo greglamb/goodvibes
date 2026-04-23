@@ -5,11 +5,47 @@ description: Use when executing implementation plans with independent tasks in t
 
 # Subagent-Driven Development
 
+## When to Use This Skill
+
+This skill is opt-in in Goodvibes. Do not invoke it by default.
+
+Invoke only when one or more applies:
+
+- User has explicitly requested subagent execution
+- The plan touches unfamiliar code or external dependencies
+- The plan is high-risk: production data, security, multi-module refactors
+- The task genuinely benefits from per-task context isolation
+
+For typical feature work on familiar code, use `executing-plans` instead.
+Opus 4.7 prefers focused one-response execution; spawning subagents adds
+wall-clock overhead without proportional quality gain for routine tasks.
+
+---
+
 Execute plan by dispatching fresh subagent per task, with two-stage review after each: spec compliance review first, then code quality review.
 
 **Why subagents:** You delegate tasks to specialized agents with isolated context. By precisely crafting their instructions and context, you ensure they stay focused and succeed at their task. They should never inherit your session's context or history — you construct exactly what they need. This also preserves your own context for coordination work.
 
 **Core principle:** Fresh subagent per task + two-stage review (spec then quality) = high quality, fast iteration
+
+## Done Looks Like
+
+- One subagent per task, each with isolated context (no session history leak)
+- Two-stage review (spec compliance, then code quality) completed after each task
+- Final finishing-a-development-branch step executed after all tasks
+
+## Scope Boundaries
+
+**In scope for this skill invocation:**
+- The specific plan passed in
+- One subagent per task with a crafted prompt
+- Two-stage review (spec compliance then code quality) per task
+- Final finishing-a-development-branch step after all tasks
+
+**Out of scope:**
+- Fanning out to subagents for work that is already clear and low-risk
+- Passing session history to subagents
+- Skipping the review stages to save time
 
 ## When to Use
 
@@ -61,7 +97,7 @@ digraph process {
     "Read plan, extract all tasks with full text, note context, create TodoWrite" [shape=box];
     "More tasks remain?" [shape=diamond];
     "Dispatch final code reviewer subagent for entire implementation" [shape=box];
-    "Use superpowers:finishing-a-development-branch" [shape=box style=filled fillcolor=lightgreen];
+    "Use goodvibes:finishing-a-development-branch" [shape=box style=filled fillcolor=lightgreen];
 
     "Read plan, extract all tasks with full text, note context, create TodoWrite" -> "Dispatch implementer subagent (./implementer-prompt.md)";
     "Dispatch implementer subagent (./implementer-prompt.md)" -> "Implementer subagent asks questions?";
@@ -80,7 +116,7 @@ digraph process {
     "Mark task complete in TodoWrite" -> "More tasks remain?";
     "More tasks remain?" -> "Dispatch implementer subagent (./implementer-prompt.md)" [label="yes"];
     "More tasks remain?" -> "Dispatch final code reviewer subagent for entire implementation" [label="no"];
-    "Dispatch final code reviewer subagent for entire implementation" -> "Use superpowers:finishing-a-development-branch";
+    "Dispatch final code reviewer subagent for entire implementation" -> "Use goodvibes:finishing-a-development-branch";
 }
 ```
 
@@ -128,7 +164,7 @@ Implementer subagents report one of four statuses. Handle each appropriately:
 ```
 You: I'm using Subagent-Driven Development to execute this plan.
 
-[Read plan file once: docs/superpowers/plans/feature-plan.md]
+[Read plan file once: docs/goodvibes/plans/feature-plan.md]
 [Extract all 5 tasks with full text and context]
 [Create TodoWrite with all tasks]
 
@@ -139,7 +175,7 @@ Task 1: Hook installation script
 
 Implementer: "Before I begin - should the hook be installed at user or system level?"
 
-You: "User level (~/.config/superpowers/hooks/)"
+You: "User level (~/.config/goodvibes/hooks/)"
 
 Implementer: "Got it. Implementing now..."
 [Later] Implementer:
@@ -265,13 +301,13 @@ Done!
 ## Integration
 
 **Required workflow skills:**
-- **superpowers:using-git-worktrees** - REQUIRED: Set up isolated workspace before starting
-- **superpowers:writing-plans** - Creates the plan this skill executes
-- **superpowers:requesting-code-review** - Code review template for reviewer subagents
-- **superpowers:finishing-a-development-branch** - Complete development after all tasks
+- **goodvibes:using-git-worktrees** - REQUIRED: Set up isolated workspace before starting
+- **goodvibes:writing-plans** - Creates the plan this skill executes
+- **goodvibes:requesting-code-review** - Code review template for reviewer subagents
+- **goodvibes:finishing-a-development-branch** - Complete development after all tasks
 
 **Subagents should use:**
-- **superpowers:test-driven-development** - Subagents follow TDD for each task
+- **goodvibes:test-driven-development** - Subagents follow TDD for each task
 
 **Alternative workflow:**
-- **superpowers:executing-plans** - Use for parallel session instead of same-session execution
+- **goodvibes:executing-plans** - Use for parallel session instead of same-session execution

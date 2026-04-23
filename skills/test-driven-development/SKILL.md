@@ -13,6 +13,26 @@ Write the test first. Watch it fail. Write minimal code to pass.
 
 **Violating the letter of the rules is violating the spirit of the rules.**
 
+## Done Looks Like
+
+- A failing test exists and has been observed failing
+- The minimal implementation makes the failing test pass
+- No code was written before the test for this specific functionality
+- The implementation is committed with the test
+
+## Scope Boundaries
+
+**In scope for this skill invocation:**
+- The specific unit of functionality being implemented (usually a function, method, or small behavior)
+- Tests and implementation for that unit
+- The commit that bundles the test with the implementation
+
+**Out of scope:**
+- Adjacent code that happens to be nearby but isn't part of the requested change
+- Broader refactors, cleanup, or linting fixes in the same file
+- Public API changes beyond what the feature requires
+- Build tooling and CI configuration
+
 ## When to Use
 
 **Always:**

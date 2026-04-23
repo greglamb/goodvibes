@@ -11,7 +11,25 @@ Load plan, review critically, execute all tasks, report when complete.
 
 **Announce at start:** "I'm using the executing-plans skill to implement this plan."
 
-**Note:** Tell your human partner that Superpowers works much better with access to subagents. The quality of its work will be significantly higher if run on a platform with subagent support (such as Claude Code or Codex). If subagents are available, use superpowers:subagent-driven-development instead of this skill.
+**Note:** Tell your human partner that Goodvibes works much better with access to subagents. The quality of its work will be significantly higher if run on a platform with subagent support (such as Claude Code or Codex). If subagents are available, use goodvibes:subagent-driven-development instead of this skill.
+
+## Done Looks Like
+
+- Plan has been read end-to-end; concerns raised before execution starts
+- Every task in the plan is either completed with verification or explicitly deferred
+- The finishing-a-development-branch skill is used after all tasks to integrate the work
+
+## Scope Boundaries
+
+**In scope for this skill invocation:**
+- Every task listed in the loaded plan
+- Verification steps explicitly specified in each task
+- Integration via finishing-a-development-branch after all tasks
+
+**Out of scope:**
+- Features or fixes not in the plan (raise them; do not silently expand scope)
+- Refactors the plan did not request
+- Modifications to the plan itself (raise concerns with the user instead)
 
 ## The Process
 
@@ -33,7 +51,7 @@ For each task:
 
 After all tasks complete and verified:
 - Announce: "I'm using the finishing-a-development-branch skill to complete this work."
-- **REQUIRED SUB-SKILL:** Use superpowers:finishing-a-development-branch
+- **REQUIRED SUB-SKILL:** Use goodvibes:finishing-a-development-branch
 - Follow that skill to verify tests, present options, execute choice
 
 ## When to Stop and Ask for Help
@@ -65,6 +83,6 @@ After all tasks complete and verified:
 ## Integration
 
 **Required workflow skills:**
-- **superpowers:using-git-worktrees** - REQUIRED: Set up isolated workspace before starting
-- **superpowers:writing-plans** - Creates the plan this skill executes
-- **superpowers:finishing-a-development-branch** - Complete development after all tasks
+- **goodvibes:using-git-worktrees** - REQUIRED: Set up isolated workspace before starting
+- **goodvibes:writing-plans** - Creates the plan this skill executes
+- **goodvibes:finishing-a-development-branch** - Complete development after all tasks
