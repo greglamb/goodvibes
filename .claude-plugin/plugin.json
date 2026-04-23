@@ -1,7 +1,7 @@
 {
   "name": "goodvibes",
   "description": "Goodvibes: a fork of Superpowers tuned for Opus 4.7 and compact-preserving workflows. Core skills library: TDD, debugging, collaboration patterns.",
-  "version": "5.0.7",
+  "version": "0.2604.2302",
   "author": {
     "name": "Greg Lamb",
     "email": "email@greglamb.dev"

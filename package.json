@@ -1,6 +1,6 @@
 {
   "name": "goodvibes",
-  "version": "5.0.7",
+  "version": "0.2604.2302",
   "type": "module",
   "main": ".opencode/plugins/goodvibes.js"
 }
