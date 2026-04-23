@@ -126,6 +126,12 @@ Every step must contain the actual content an engineer needs. These are **plan f
 - Exact commands with expected output
 - DRY, YAGNI, TDD, frequent commits
 
+## Rejected Approaches Logging
+
+If an alternative plan structure is considered and rejected during plan construction (e.g., "we could batch these tasks but chose to keep them separate because…"), log the rejection to `TODO.md` under `## Rejected Approaches` with date and rationale.
+
+This extends the 'no silent deferrals' rule to plan-level decisions.
+
 ## Self-Review
 
 After writing the complete plan, look at the spec with fresh eyes and check the plan against it. This is a checklist you run yourself — not a subagent dispatch.

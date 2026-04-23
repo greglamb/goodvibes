@@ -9,6 +9,16 @@ Help turn ideas into fully formed designs and specs through natural collaborativ
 
 Start by understanding the current project context, then ask questions one at a time to refine the idea. Once you understand what you're building, present the design and get user approval.
 
+## Pre-Flight
+
+Before engaging with the request:
+
+1. **Context check:** If context usage is high (>60% or you notice summarization drift), ask the user whether to proceed or run `/compact` first. Use AskUserQuestion; do not assume.
+
+2. **Re-read applicable project-scoped skills:** Enumerate the project-scoped skills available in the current project (including `project-standards` if present). For each skill, if there is even a 1% chance it applies to this request, read it. Err heavily on the side of reading — the cost of a skipped skill (wrong-but-plausible output that violates project invariants) is higher than the cost of a skim. All brainstormed designs must conform to any applicable project-scoped skill's conventions.
+
+3. **Announce the step:** State which brainstorming phase you're entering ("Exploring context…", "Proposing approaches…", etc.) so the user can follow the flow.
+
 ## Done Looks Like
 
 - Requirements stated explicitly with no assumed context
@@ -141,6 +151,15 @@ Wait for the user's response. If they request changes, make them and re-run the 
 
 - Invoke the writing-plans skill to create a detailed implementation plan
 - Do NOT invoke any other skill. writing-plans is the next step.
+
+## Post-Flight
+
+After the brainstorm produces an approved design:
+
+1. **Save the design doc:** Write to `docs/goodvibes/specs/YYYY-MM-DD-<topic>-design.md` (already handled in the After the Design section — this is a reminder to do it before moving on).
+2. **Record in episodic memory (if available):** If `episodic-memory` is installed, add the design's summary and key decisions. Degrade silently if not available.
+3. **Log rejected approaches:** For each alternative considered and rejected during the brainstorm, add an entry to `TODO.md` under `## Rejected Approaches` with the date, the rejected approach, and the rationale. Wires the "no silent rejections" rule into behavior.
+4. **Surface promotion candidates:** If the brainstorm revealed architectural invariants, persistent conventions, or cross-cutting constraints that should outlive this feature, list them as CLAUDE.md promotion candidates. Offer to run `/goodvibes:promote` for each the user wants to make durable.
 
 ## Key Principles
 
